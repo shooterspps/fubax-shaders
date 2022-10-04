@@ -37,28 +37,28 @@ inspired by Marty McFly YACA shader
 
 uniform float4 K < __UNIFORM_DRAG_FLOAT4
 	ui_min = -0.1; ui_max =  0.1;
-	ui_label = "Radial 'k' coefficients";
-	ui_tooltip = "Radial distortion coefficients k1, k2, k3, k4.";
-	ui_category = "Chromatic aberration";
+	ui_label = "径向 'k' 系数";
+	ui_tooltip = "径向畸变系数 k1, k2, k3, k4.";
+	ui_category = "色度差";
 > = float4(0.016, 0f, 0f, 0f);
 
 uniform float AchromatAmount < __UNIFORM_SLIDER_FLOAT1
 	ui_min = 0f; ui_max =  1f;
-	ui_label = "Achromat amount";
-	ui_tooltip = "Achromat strength factor.";
-	ui_category = "Chromatic aberration";
+	ui_label = "消色差透镜";
+	ui_tooltip = "消色差强度.";
+	ui_category = "色度差";
 > = 0f;
 
 // Performance
 
 uniform uint ChromaticSamplesLimit < __UNIFORM_SLIDER_INT1
 	ui_min = 6u; ui_max = CHROMATIC_ABERRATION_MAX_SAMPLES; ui_step = 2u;
-	ui_label = "Chromatic aberration samples limit";
+	ui_label = "色差样本限制";
 	ui_tooltip =
-		"Sample count is generated automatically per pixel, based on visible distortion amount.\n"
-		"This option limits maximum sample (steps) count allowed for color fringing.\n"
-		"Only even numbers are accepted, odd numbers will be clamped.";
-	ui_category = "Performance";
+		"根据可见的失真量 每个像素自动生成样本数.\n"
+		"该选项限制了色差所允许的最大样本数.\n"
+		"只接受偶数, 奇数将被钳制.";
+	ui_category = "性能";
 	ui_category_closed = true;
 > = 64u;
 
@@ -169,13 +169,13 @@ void ChromaticAberrationPS(float4 pixelPos : SV_Position, float2 viewCoord : TEX
 
 technique ChromaticAberration
 <
-	ui_label = "Chromatic Aberration";
+	ui_label = "色度差";
 	ui_tooltip =
-		"Chromatic aberration color split at the screen borders.\n"
+		"在屏幕边界分割色差颜色.\n"
 		"\n"
-		"	· Dynamic minimal sample count per pixel.\n"
-		"	· Accurate color split.\n"
-		"	· Driven by lens distortion Brown-Conrady division model.\n"
+		"	· 每个像素的动态最小采样数.\n"
+		"	· 准确的颜色分割.\n"
+		"	· 由镜头畸变驱动-康瑞迪分割模型.\n"
 		"\n"
 		"This effect © 2018-2022 Jakub Maksymilian Fober\n"
 		"Licensed under CC BY-NC-ND 3.0 + additional permissions (see source).";

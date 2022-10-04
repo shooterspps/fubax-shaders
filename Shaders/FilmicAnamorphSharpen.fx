@@ -16,54 +16,54 @@ http://creativecommons.org/licenses/by-sa/4.0/.
 #include "ReShadeUI.fxh"
 
 uniform float Strength < __UNIFORM_SLIDER_FLOAT1
-	ui_label = "Strength";
+	ui_label = "强度";
 	ui_min = 0.0; ui_max = 100.0; ui_step = 0.01;
 > = 60.0;
 
 uniform float Offset < __UNIFORM_SLIDER_FLOAT1
-	ui_label = "Radius";
-	ui_tooltip = "High-pass cross offset in pixels";
+	ui_label = "半径";
+	ui_tooltip = "高通交叉偏移像素";
 	ui_min = 0.0; ui_max = 2.0; ui_step = 0.01;
 > = 0.1;
 
 uniform float Clamp < __UNIFORM_SLIDER_FLOAT1
-	ui_label = "Clamping";
+	ui_label = "钳位";
 	ui_min = 0.5; ui_max = 1.0; ui_step = 0.001;
 > = 0.65;
 
 uniform bool UseMask < __UNIFORM_INPUT_BOOL1
-	ui_label = "Sharpen only center";
-	ui_tooltip = "Sharpen only in center of the image";
+	ui_label = "只锐化中心";
+	ui_tooltip = "只锐化图像的中心";
 > = false;
 
 uniform bool DepthMask < __UNIFORM_INPUT_BOOL1
-	ui_label = "Enable depth rim masking";
-	ui_tooltip = "Depth high-pass mask switch";
-	ui_category = "Depth mask";
+	ui_label = "启用深度边缘屏蔽";
+	ui_tooltip = "深度高通掩模开关";
+	ui_category = "深度遮罩";
 	ui_category_closed = true;
 > = false;
 
 uniform int DepthMaskContrast < __UNIFORM_DRAG_INT1
-	ui_label = "Edges mask strength";
-	ui_tooltip = "Depth high-pass mask amount";
-	ui_category = "Depth mask";
+	ui_label = "掩模边缘强度";
+	ui_tooltip = "深度高通掩模量";
+	ui_category = "深度遮罩";
 	ui_min = 0; ui_max = 2000; ui_step = 1;
 > = 128;
 
 uniform int Coefficient < __UNIFORM_RADIO_INT1
-	ui_tooltip = "For digital video signal use BT.709, for analog (like VGA) use BT.601";
-	ui_label = "YUV coefficients";
-	ui_items = "BT.709 - digital\0BT.601 - analog\0";
-	ui_category = "Additional settings";
+	ui_tooltip = "用于数字视频信号使用BT.709, 对于模拟信号(如VGA)使用BT.601";
+	ui_label = "YUV 系数";
+	ui_items = "BT.709 - 数字视频信号\0BT.601 - 模拟信号\0";
+	ui_category = "附加设置";
 	ui_category_closed = true;
 > = 0;
 
 uniform bool Preview < __UNIFORM_INPUT_BOOL1
-	ui_label = "Preview sharpen layer";
-	ui_tooltip = "Preview sharpen layer and mask for adjustment.\n"
-		"If you don't see red strokes,\n"
-		"try changing Preprocessor Definitions in the Settings tab.";
-	ui_category = "Debug View";
+	ui_label = "预览锐化层";
+	ui_tooltip = "预览锐化层和蒙版进行调整.\n"
+		"你看不见红色的笔画,\n"
+		"尝试在设置选项卡中更改预处理器定义.";
+	ui_category = "调试视图";
 	ui_category_closed = true;
 > = false;
 
@@ -279,7 +279,7 @@ float3 FilmicAnamorphSharpenPS(float4 pos : SV_Position, float2 UvCoord : TEXCOO
 	 /// OUTPUT ///
 	//////////////
 
-technique FilmicAnamorphSharpen < ui_label = "Filmic Anamorphic Sharpen"; >
+technique FilmicAnamorphSharpen < ui_label = "影视畸变锐化"; >
 {
 	pass
 	{

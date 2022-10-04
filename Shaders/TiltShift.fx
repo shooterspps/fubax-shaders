@@ -35,39 +35,39 @@ me at jakub.m.fober@protonmail.com.
 
 uniform float4 K < __UNIFORM_DRAG_FLOAT4
 	ui_min = -0.2; ui_max = 0.2;
-	ui_label = "Distortion profile 'k'";
-	ui_tooltip = "Distortion coefficients K1, K2, K3, K4";
-	ui_category = "Tilt-shift blur";
+	ui_label = "畸变曲线 'k'";
+	ui_tooltip = "畸变系数 K1, K2, K3, K4";
+	ui_category = "移轴摄影模糊";
 > = float4(0.025, 0f, 0f, 0f);
 
 uniform int BlurAngle < __UNIFORM_SLIDER_INT1
 	ui_min = -90; ui_max = 90;
-	ui_label = "Tilt angle";
-	ui_tooltip = "Tilt the blur line.";
-	ui_category = "Tilt-shift blur";
+	ui_label = "倾斜角度";
+	ui_tooltip = "倾斜模糊线.";
+	ui_category = "移轴摄影模糊";
 > = 0;
 
 uniform float BlurOffset < __UNIFORM_SLIDER_FLOAT1
 	ui_min = -1f; ui_max = 1f; ui_step = 0.01;
-	ui_label = "Line offset";
-	ui_tooltip = "Offset the blur center line.";
-	ui_category = "Tilt-shift blur";
+	ui_label = "线条偏移";
+	ui_tooltip = "偏移模糊中心线.";
+	ui_category = "移轴摄影模糊";
 > = 0f;
 
 // Blur line
 
 uniform bool VisibleLine < __UNIFORM_INPUT_BOOL1
-	ui_label = "Visualize center line";
-	ui_tooltip = "Visualize blur center line.";
-	ui_category = "Blur line";
+	ui_label = "可视化中心线";
+	ui_tooltip = "可视化模糊中心线.";
+	ui_category = "模糊线";
 	ui_category_closed = true;
 > = false;
 
 uniform uint BlurLineWidth < __UNIFORM_SLIDER_INT1
 	ui_min = 2u; ui_max = 64u;
-	ui_label = "Visualized line width";
-	ui_tooltip = "Tilt-shift line thickness in pixels.";
-	ui_category = "Blur line";
+	ui_label = "可视化线宽";
+	ui_tooltip = "倾斜位移线厚度像素单位.";
+	ui_category = "模糊线";
 > = 32u;
 
 	/* TEXTURES */
@@ -287,12 +287,12 @@ void TiltShiftPassVerticalPS(
 
 technique TiltShift
 <
-	ui_label = "Tilt Shift";
+	ui_label = "移轴摄影";
 	ui_tooltip =
-		"Tilt shift blur effect.\n"
+		"移轴摄影模糊特效.\n"
 		"\n"
-		"	· dynamic per-pixel sampling.\n"
-		"	· minimal sample count.\n"
+		"	· 每像素动态采样.\n"
+		"	· 最小样本数.\n"
 		"\n"
 		"This effect © 2018-2022 Jakub Maksymilian Fober\n"
 		"Licensed under CC BY-NC-ND 3.0 + additional permissions (see source).";

@@ -17,70 +17,70 @@ http://creativecommons.org/licenses/by-sa/4.0/.
 
 uniform float Threshold < __UNIFORM_SLIDER_FLOAT1
 	ui_min = 0.0; ui_max = 0.999; ui_step = 0.001;
-	ui_category = "Distance adjustment";
+	ui_category = "距离调整";
 > = 0.5;
 
 uniform bool RadialX <
-	ui_label = "Horizontally radial depth";
-	ui_category = "Radial distance";
+	ui_label = "水平径向深度";
+	ui_category = "径向距离";
 	ui_category_closed = true;
 > = false;
 uniform bool RadialY <
-	ui_label = "Vertically radial depth";
-	ui_category = "Radial distance";
+	ui_label = "垂直径向深度";
+	ui_category = "径向距离";
 > = false;
 
 uniform int FOV < __UNIFORM_SLIDER_INT1
-	ui_label = "FOV (horizontal)";
-	ui_tooltip = "Field of view in degrees";
+	ui_label = "视场(水平)";
+	ui_tooltip = "视野的角度";
 	#if __RESHADE__ < 40000
 		ui_step = 1;
 	#endif
 	ui_min = 0; ui_max = 170;
-	ui_category = "Radial distance";
+	ui_category = "径向距离";
 > = 90;
 
 uniform int Pass < __UNIFORM_RADIO_INT1
-	ui_label = "Keying type";
-	ui_items = "Background key\0Foreground key\0";
-	ui_category = "Direction adjustment";
+	ui_label = "键类型";
+	ui_items = "背景键\0前景键\0";
+	ui_category = "方向调整";
 > = 0;
 
 uniform bool Floor <
-	ui_label = "Mask floor";
-	ui_category = "Floor masking (experimental)";
+	ui_label = "覆盖地板";
+	ui_category = "地板遮挡 (实验性)";
 	ui_category_closed = true;
 > = false;
 
 uniform float FloorAngle < __UNIFORM_SLIDER_FLOAT1
-	ui_label = "Floor angle";
-	ui_category = "Floor masking (experimental)";
+	ui_label = "地板角度";
+	ui_category = "地板遮盖 (实验性)";
 	ui_min = 0.0; ui_max = 1.0;
 > = 1.0;
 
 uniform int Precision < __UNIFORM_SLIDER_INT1
-	ui_label = "Floor precision";
-	ui_category = "Floor masking (experimental)";
+	ui_label = "地板精度";
+	ui_category = "地板遮盖 (实验性)";
 	ui_min = 2; ui_max = 64;
 > = 4;
 
 uniform int Color < __UNIFORM_RADIO_INT1
-	ui_label = "Keying color";
-	ui_tooltip = "Ultimatte(tm) Super Blue and Green are industry standard colors for chromakey";
-	ui_items = "Super Blue Ultimatte(tm)\0Green Ultimatte(tm)\0Custom\0";
-	ui_category = "Color settings";
+	ui_label = "键颜色";
+	ui_tooltip = "超级蓝色和绿色是色度键的工业标准颜色";
+	ui_items = "超级蓝抠像(tm)\0绿色抠像(tm)\0自定义\0";
+	ui_category = "颜色设置";
 	ui_category_closed = true;
 > = 1;
 
 uniform float3 CustomColor < __UNIFORM_COLOR_FLOAT3
-	ui_label = "Custom color";
-	ui_category = "Color settings";
+	ui_label = "自定义颜色";
+	ui_category = "颜色设置";
 > = float3(1.0, 0.0, 0.0);
 
 uniform bool AntiAliased <
-	ui_label = "Anti-aliased mask";
-	ui_tooltip = "Disabling this option will reduce masking gaps";
-	ui_category = "Additional settings";
+	ui_label = "抗锯齿覆盖";
+	ui_tooltip = "禁用该选项将减少遮蔽间隙";
+	ui_category = "额外设置";
 	ui_category_closed = true;
 > = false;
 
@@ -175,7 +175,7 @@ float3 ChromakeyPS(float4 pos : SV_Position, float2 texcoord : TEXCOORD) : SV_Ta
 	 /// OUTPUT ///
 	//////////////
 
-technique Chromakey < ui_tooltip = "Generate green-screen wall based of depth"; >
+technique Chromakey < ui_tooltip = "根据深度生成绿屏墙"; >
 {
 	pass
 	{

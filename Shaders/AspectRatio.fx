@@ -5,30 +5,30 @@ by Fubax 2019 for ReShade
 #include "ReShadeUI.fxh"
 
 uniform float A < __UNIFORM_SLIDER_FLOAT1
-	ui_label = "Correct proportions";
-	ui_category = "Aspect ratio";
+	ui_label = "矩形比例";
+	ui_category = "纵横比";
 	ui_min = -1.0; ui_max = 1.0;
 > = 0.0;
 
 uniform float Zoom < __UNIFORM_SLIDER_FLOAT1
-	ui_label = "Scale image";
-	ui_category = "Aspect ratio";
+	ui_label = "图像缩放";
+	ui_category = "纵横比";
 	ui_min = 1.0; ui_max = 1.5;
 > = 1.0;
 
 uniform bool FitScreen < __UNIFORM_INPUT_BOOL1
-	ui_label = "Scale image to borders";
-	ui_category = "Borders";
+	ui_label = "图像按边界缩放";
+	ui_category = "边界";
 > = true;
 
 uniform bool UseBackground < __UNIFORM_INPUT_BOOL1
-	ui_label = "Use background image";
-	ui_category = "Borders";
+	ui_label = "使用背景图像";
+	ui_category = "边界";
 > = true;
 
 uniform float4 Color < __UNIFORM_COLOR_FLOAT4
-	ui_label = "Background color";
-	ui_category = "Borders";
+	ui_label = "背景颜色";
+	ui_category = "边界";
 > = float4(0.027, 0.027, 0.027, 0.17);
 
 #include "ReShade.fxh"
@@ -90,8 +90,8 @@ float3 AspectRatioPS(float4 pos : SV_Position, float2 texcoord : TEXCOORD) : SV_
 
 technique AspectRatioPS
 <
-	ui_label = "Aspect Ratio";
-	ui_tooltip = "Correct image aspect ratio";
+	ui_label = "屏幕宽高比";
+	ui_tooltip = "矩形图像纵横比";
 >
 {
 	pass
